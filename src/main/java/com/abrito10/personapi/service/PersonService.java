@@ -6,27 +6,26 @@ import com.abrito10.personapi.entity.Person;
 import com.abrito10.personapi.exception.PersonNotFoundException;
 import com.abrito10.personapi.mapper.PersonMapper;
 import com.abrito10.personapi.repository.PersonRepository;
-import com.abrito10.personapi.repository.PersonRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
+
 public class PersonService {
 
     private PersonRepository repository;
 
     private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
-    @Autowired
-    public PersonService(PersonRepository repository) {
-        this.repository = repository;
-    }
+   // @Autowired
+   // public PersonService(PersonRepository repository) {
+   //     this.repository = repository;
+   // }
 
     public MessageResponseDTO create(PersonDTO entityDTO) {
 

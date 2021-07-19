@@ -1,10 +1,10 @@
 package com.abrito10.personapi.controller;
+
 import com.abrito10.personapi.dto.request.PersonDTO;
 import com.abrito10.personapi.dto.response.MessageResponseDTO;
-import com.abrito10.personapi.entity.Person;
 import com.abrito10.personapi.exception.PersonNotFoundException;
-import com.abrito10.personapi.repository.PersonRepository;
 import com.abrito10.personapi.service.PersonService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/people")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 
 public class PersonController {
 
@@ -25,10 +26,10 @@ public class PersonController {
     //    this.repository = repository;
     //}
 
-    @Autowired
-    public PersonController(PersonService service) {
-        this.service = service;
-    }
+    //@Autowired
+    //public PersonController(PersonService service) {
+    //    this.service = service;
+    //}
 
     //@GetMapping
     //public String getBook() {
