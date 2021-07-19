@@ -2,6 +2,7 @@ package com.abrito10.personapi.controller;
 import com.abrito10.personapi.dto.request.PersonDTO;
 import com.abrito10.personapi.dto.response.MessageResponseDTO;
 import com.abrito10.personapi.entity.Person;
+import com.abrito10.personapi.exception.PersonNotFoundException;
 import com.abrito10.personapi.repository.PersonRepository;
 import com.abrito10.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,4 +51,8 @@ public class PersonController {
         return service.listAll();
     }
 
+    @GetMapping("/{id}")
+    public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
+        return service.findById(id);
+    }
 }
