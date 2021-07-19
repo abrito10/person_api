@@ -1,15 +1,44 @@
 package com.abrito10.personapi.controller;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.abrito10.personapi.dto.response.MessageResponseDTO;
+import com.abrito10.personapi.entity.Person;
+import com.abrito10.personapi.repository.PersonRepository;
+import com.abrito10.personapi.service.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/people")
+
 public class PersonController {
 
-    @GetMapping
-    public String getBook() {
-            return "API Test";
+    //private PersonRepository repository;
+    private PersonService service;
+
+    //@Autowired
+    //public PersonController(PersonRepository repository) {
+    //    this.repository = repository;
+    //}
+
+    @Autowired
+    public PersonController(PersonService service) {
+        this.service = service;
     }
+
+    //@GetMapping
+    //public String getBook() {
+    //        return "API Test";
+    //}
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public MessageResponseDTO createPerson(@RequestBody Person entity) {
+     //   Person save = repository.save(entity);
+     //   return MessageResponseDTO
+     //           .builder()
+     //           .message("Criado pessoa com o ID " + save.getId())
+     //           .build();
+        return service.create(entity);
+    }
+
 }
